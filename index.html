@@ -6,25 +6,36 @@
   <title>Pile ou Face - Fêtes de Bayonne</title>
   <style>
     body {
-      background: linear-gradient(45deg, #ff3860, #ffdd57);
+      background: linear-gradient(45deg, #e60026, #ffffff);
       font-family: 'Comic Sans MS', cursive, sans-serif;
       text-align: center;
       padding: 2rem;
-      color: #fff;
+      color: #000;
     }
     h1 {
       font-size: 3rem;
       margin-bottom: 1rem;
-      text-shadow: 2px 2px 5px #000;
+      color: #e60026;
+      text-shadow: 1px 1px #fff;
     }
     #resultat {
       font-size: 2rem;
       margin-top: 2rem;
       font-weight: bold;
+      min-height: 3rem;
+    }
+    #compteur {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      background: #e60026;
+      color: #fff;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
     }
     button {
-      background-color: #fff;
-      color: #ff3860;
+      background-color: #e60026;
+      color: #fff;
       font-size: 1.5rem;
       padding: 1rem 2rem;
       border: none;
@@ -36,40 +47,58 @@
     button:hover {
       transform: scale(1.05);
     }
+    .coin {
+      width: 100px;
+      height: 100px;
+      margin: 2rem auto;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffdd57 20%, #e6b800 100%);
+      animation: spin 2s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotateY(0); }
+      100% { transform: rotateY(360deg); }
+    }
+    .hidden {
+      display: none;
+    }
     footer {
       margin-top: 4rem;
       font-size: 1rem;
-      color: #fff;
-    }
-    .loading {
-      font-size: 1.5rem;
-      animation: clignote 1s infinite;
-    }
-    @keyframes clignote {
-      0% { opacity: 1; }
-      50% { opacity: 0.3; }
-      100% { opacity: 1; }
+      color: #e60026;
     }
   </style>
 </head>
 <body>
-  <h1>🍻 Pile ou Face ? 🍻</h1>
+  <h1>🍷 Pile ou Face ? 🍷</h1>
   <p>Tu m'as scanné aux Fêtes de Bayonne... maintenant le sort va décider !</p>
+  <div id="coin" class="coin hidden"></div>
   <button onclick="lancerPileOuFace()">Lancer la pièce 🎲</button>
   <div id="resultat"></div>
+  <div id="compteur">Verres gagnés : <span id="score">0</span></div>
 
   <footer>
-    Fêtes de Bayonne 2025 · Bon courage pour le prochain verre !
+    Fêtes de Bayonne 2025 · Santé et bonne chance !
   </footer>
 
   <script>
+    let verresGagnes = 0;
+
     function lancerPileOuFace() {
       const resultatDiv = document.getElementById('resultat');
-      resultatDiv.innerHTML = '<span class="loading">Lancement en cours...</span>';
+      const coin = document.getElementById('coin');
+      const scoreSpan = document.getElementById('score');
+
+      resultatDiv.innerText = '';
+      coin.classList.remove('hidden');
+      coin.style.animation = 'spin 2s linear';
 
       setTimeout(() => {
+        coin.classList.add('hidden');
         resultatDiv.innerText = 'PILE 🍺 → C’est TOI qui payes un verre !';
-      }, 2000); // 2 secondes d'attente pour simuler un tirage
+        verresGagnes++;
+        scoreSpan.innerText = verresGagnes;
+      }, 2000);
     }
   </script>
 </body>
