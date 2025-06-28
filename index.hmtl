@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pile ou Face - Fêtes de Bayonne</title>
+  <style>
+    body {
+      background: linear-gradient(45deg, #ff3860, #ffdd57);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      padding: 2rem;
+      color: #fff;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 5px #000;
+    }
+    #resultat {
+      font-size: 2rem;
+      margin-top: 2rem;
+      font-weight: bold;
+    }
+    button {
+      background-color: #fff;
+      color: #ff3860;
+      font-size: 1.5rem;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+    button:hover {
+      transform: scale(1.05);
+    }
+    footer {
+      margin-top: 4rem;
+      font-size: 1rem;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>🍻 Pile ou Face ? 🍻</h1>
+  <p>Tu m'as scanné aux Fêtes de Bayonne... maintenant le sort va décider !</p>
+  <button onclick="lancerPileOuFace()">Lancer la pièce 🎲</button>
+  <div id="resultat"></div>
+
+  <footer>
+    Fêtes de Bayonne 2025 · Bon courage pour le prochain verre !
+  </footer>
+
+  <script>
+    function lancerPileOuFace() {
+      const resultat = Math.random() < 0.5 ? 'PILE 🍺 → C’est TOI qui payes un verre !' : 'FACE 🥂 → C’est MOI qui paye un verre !';
+      document.getElementById('resultat').innerText = resultat;
+    }
+  </script>
+</body>
+</html>
