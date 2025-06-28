@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pile ou Face - Fêtes de Bayonne</title>
+  <title>Tu me payes un verre !</title>
   <style>
     body {
       background: linear-gradient(45deg, #e60026, #ffffff);
@@ -13,49 +13,18 @@
       color: #000;
     }
     h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
       color: #e60026;
       text-shadow: 1px 1px #fff;
     }
-    #resultat {
+    p {
       font-size: 2rem;
-      margin-top: 2rem;
       font-weight: bold;
-      min-height: 3rem;
     }
-    #compteur {
-      margin-top: 2rem;
-      font-size: 1.2rem;
-      background: #e60026;
-      color: #fff;
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      border-radius: 10px;
-    }
-    button {
-      background-color: #e60026;
-      color: #fff;
-      font-size: 1.5rem;
-      padding: 1rem 2rem;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      transition: transform 0.2s;
-    }
-    button:hover {
-      transform: scale(1.05);
-    }
-    .loading {
-      font-size: 1.5rem;
-      color: #e60026;
-      animation: clignote 1s infinite;
-    }
-    @keyframes clignote {
-      0% { opacity: 1; }
-      50% { opacity: 0.3; }
-      100% { opacity: 1; }
+    .verre {
+      font-size: 5rem;
+      margin: 2rem 0;
     }
     footer {
       margin-top: 4rem;
@@ -65,35 +34,13 @@
   </style>
 </head>
 <body>
-  <h1>🍷 Pile ou Face ? 🍷</h1>
-  <p>Tu m'as scanné aux Fêtes de Bayonne... maintenant le sort va décider !</p>
-  <div id="animation" class="loading hidden">Lancement en cours...</div>
-  <button onclick="lancerPileOuFace()">Lancer la pièce 🎲</button>
-  <div id="resultat"></div>
-  <div id="compteur">Verres gagnés : <span id="score">0</span></div>
+  <h1>🍷 Hé, bien joué ! 🍷</h1>
+  <div class="verre">🥂</div>
+  <p>Tu m'as scanné aux Fêtes de Bayonne...</p>
+  <p><strong>Et ça veut dire que TU ME DOIS UN VERRE !</strong></p>
 
   <footer>
-    Fêtes de Bayonne 2025 · Santé et bonne chance !
+    Fêtes de Bayonne 2025 · Santé et solidarité !
   </footer>
-
-  <script>
-    let verresGagnes = 0;
-
-    function lancerPileOuFace() {
-      const resultatDiv = document.getElementById('resultat');
-      const animation = document.getElementById('animation');
-      const scoreSpan = document.getElementById('score');
-
-      resultatDiv.innerText = '';
-      animation.classList.remove('hidden');
-
-      setTimeout(() => {
-        animation.classList.add('hidden');
-        resultatDiv.innerText = 'PILE 🍺 → C’est TOI qui payes un verre !';
-        verresGagnes++;
-        scoreSpan.innerText = verresGagnes;
-      }, 2000);
-    }
-  </script>
 </body>
 </html>
