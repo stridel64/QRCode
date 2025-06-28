@@ -41,6 +41,15 @@
       font-size: 1rem;
       color: #fff;
     }
+    .loading {
+      font-size: 1.5rem;
+      animation: clignote 1s infinite;
+    }
+    @keyframes clignote {
+      0% { opacity: 1; }
+      50% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
   </style>
 </head>
 <body>
@@ -55,8 +64,12 @@
 
   <script>
     function lancerPileOuFace() {
-      const resultat = Math.random() < 0.5 ? 'PILE 🍺 → C’est TOI qui payes un verre !' : 'FACE 🥂 → C’est MOI qui paye un verre !';
-      document.getElementById('resultat').innerText = resultat;
+      const resultatDiv = document.getElementById('resultat');
+      resultatDiv.innerHTML = '<span class="loading">Lancement en cours...</span>';
+
+      setTimeout(() => {
+        resultatDiv.innerText = 'PILE 🍺 → C’est TOI qui payes un verre !';
+      }, 2000); // 2 secondes d'attente pour simuler un tirage
     }
   </script>
 </body>
